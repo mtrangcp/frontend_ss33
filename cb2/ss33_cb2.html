@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ss33 cb2</title>
+  </head>
+  <body>
+    <textarea name="describe" id="describe"></textarea>
+
+    <p><span id="count">0</span> kí tự</p>
+
+    <button type="button" id="btnCheck">Kiểm tra</button>
+
+    <script>
+      let count = document.querySelector("#count");
+      let textInput = document.querySelector("#describe");
+      let btnCheck = document.querySelector("#btnCheck");
+
+      btnCheck.addEventListener("click", function () {
+        if (textInput) {
+          count.textContent = textInput.value.length;
+        } else {
+          alert("Dữ liệu rỗng");
+        }
+      });
+    </script>
+  </body>
+</html>

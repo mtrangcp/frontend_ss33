@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ss33 cb3</title>
+
+    <style>
+      body {
+        text-align: center;
+      }
+      #listProduct {
+        list-style: none;
+      }
+      #btnFilter:hover {
+        opacity: 0.6;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="#">
+      <select name="listCate" id="listCate"></select>
+
+      <button id="btnFilter">Lọc</button>
+    </form>
+
+    <ul id="listProduct">
+      <li>
+        <strong>Tên đồ ăn: </strong><span id="namePro"></span>
+        <strong> - Danh mục: </strong><span id="nameCate"></span>
+      </li>
+    </ul>
+
+    <script>
+      let btnFilter = document.querySelector("#btnFilter");
+      let selectList = document.querySelector("#listCate");
+      let listPro = document.querySelector("#listProduct");
+      let arrProducts = [
+        { name: "Rau sạch", category: "Đồ ăn" },
+        { name: "Thịt lợn", category: "Đồ ăn" },
+        { name: "Pepsi không calo", category: "Nước" },
+        { name: "Cocacola", category: "Nước" },
+        { name: "Cờ lê", category: "Dụng cụ" },
+        { name: "Tua vít", category: "Dụng cụ" },
+      ];
+
+      const renderData = (arr) => {
+        listPro.innerHTML = "";
+
+        let result = arr.map((item) => {
+          return `
+            <li>
+                <strong>Tên đồ ăn: </strong><span id="namePro">${item.name}</span>
+                <strong> - Danh mục: </strong><span id="nameCate">${item.category}</span>
+            </li>
+            `;
+        });
+
+        let convertArr = result.join("");
+        listPro.innerHTML = convertArr;
+      };
+      renderData(arrProducts);
+
+      const renderSelect = () => {
+        selectList.innerHTML = "";
+        let cate = [];
+
+        let result = arrProducts.map((item) => {
+          if (!cate.includes(item.category)) {
+            cate.push(item.category);
+            return `
+                      <option value="${item.category}">${item.category}</option>
+                  `;
+          } else {
+            return "";
+          }
+        });
+
+        let convertArr = result.join("");
+        selectList.innerHTML =
+          `<option value="">--- Lựa chọn danh mục ---</option>` + convertArr;
+      };
+      renderSelect();
+
+      btnFilter.addEventListener("click", function (event) {
+        event.preventDefault();
+        let valueChecked = selectList.value;
+
+        if (valueChecked === "") {
+          renderData(arrProducts);
+        } else {
+          let result = arrProducts.filter(
+            (item) => item.category === valueChecked
+          );
+
+          renderData(result);
+        }
+      });
+    </script>
+  </body>
+</html>

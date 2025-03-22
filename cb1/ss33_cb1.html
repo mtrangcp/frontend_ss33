@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ss33 cb1</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+      }
+      body {
+        text-align: center;
+      }
+      .inputPass {
+        border: none;
+        width: 90%;
+        height: 70%;
+      }
+      .inputPass:focus {
+        outline: none;
+        border-color: transparent; /* Ẩn viền */
+      }
+      .boxPass {
+        width: 400px;
+        height: 40px;
+        margin: 20px auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid gray;
+        padding: 0 10px;
+        border-radius: 8px;
+      }
+      #iconEye:hover {
+        opacity: 0.5;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="boxPass">
+      <input
+        type="password"
+        placeholder="Enter your password"
+        id="inputPass"
+        class="inputPass"
+      />
+
+      <ion-icon name="eye-outline" id="iconEye"></ion-icon>
+    </div>
+
+    <script>
+      let inputPass = document.querySelector("#inputPass");
+      let iconEye = document.querySelector("#iconEye");
+
+      iconEye.addEventListener("click", function () {
+        if (inputPass.type === "password") {
+          inputPass.setAttribute("type", "text");
+          iconEye.setAttribute("name", "eye-off-outline");
+        } else {
+          inputPass.setAttribute("type", "password");
+          iconEye.setAttribute("name", "eye-outline");
+        }
+      });
+    </script>
+
+    <script
+      type="module"
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"
+    ></script>
+  </body>
+</html>
