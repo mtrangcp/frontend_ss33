@@ -153,11 +153,16 @@ function convertMoney(money) {
 }
 
 function payCart() {
-    let sum = convertMoney(sumCart());
-    alert(`Cảm ơn bạn đã mua hàng \n Tổng giá trị đơn hàng: ${sum}`);
+    if (carts.length === 0) {
+        alert("Giỏ hàng trống!");
+    } else {
 
-    carts.length = 0;
-    renderCart();
+        let sum = convertMoney(sumCart());
+        alert(`Cảm ơn bạn đã mua hàng \n Tổng giá trị đơn hàng: ${sum}`);
+
+        carts.length = 0;
+        renderCart();
+    }
 }
 
 function decreaseQuantity(index) {
