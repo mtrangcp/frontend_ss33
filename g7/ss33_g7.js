@@ -65,7 +65,7 @@ const renderData = () => {
                     <img src="${item.image}" class="card-img-top" alt="img" />
                     <div class="card-body">
                         <h5 class="card-title">${item.name}</h5>
-                        <p class="card-text">${convertMoney(item.price)} </p>
+                        <p class="card-text"  style="color: red; font-weight: bold;">${convertMoney(item.price)} </p>
                         <a href="#" onclick="addCart(${item.id})" class="btn btn-success" >Thêm vào giỏ hàng</a>
                     </div>
                 </div>
@@ -113,7 +113,7 @@ function renderCart() {
                         <div class="item">
                             <div class="item-info">
                                 <h5 class="card-title">${products[i].name}</h5>
-                                <p><span>${convertMoney(products[i].price)}</span> X <span>${item.quantity}</span></p>
+                                <p style="color: red; font-weight: bold; text-align: start;"><span>${convertMoney(products[i].price)}</span> X <span>${item.quantity}</span></p>
                             </div>
         
                             <div>
