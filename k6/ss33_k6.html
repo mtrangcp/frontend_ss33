@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ss33 k6</title>
+    <link rel="stylesheet" href="ss33_k6.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Ứng dụng Thời tiết</h1>
+
+      <div class="formSearch">
+        <input type="text" placeholder="Nhập thành phố" id="inputCity" />
+        <button id="btn">Tìm kiếm</button>
+      </div>
+
+      <div class="result">
+        <!-- <h2 id="cityName">hoc hi minh</h2>
+        <div class="info">
+          <p class="info-item">☀️</p>
+          <p class="info-item"><strong>32&deg;C</strong></p>
+          <div class="info-detail">
+            <p>Có mây</p>
+            <p>Độ ẩm: <span>75</span>%</p>
+            <p>tốc độ gió: <span>7</span> km/h</p>
+          </div>
+        </div> -->
+      </div>
+    </div>
+
+    <script>
+      const weatherData = {
+        "Hà Nội": {
+          temperature: 25, // nhiet do
+          humidity: 70, // độ ẩm
+          windSpeed: 5, // tốc độ gió
+          description: "Có mây", // mô tả
+          icon: "☁️",
+        },
+        "Hồ Chí Minh": {
+          temperature: 32,
+          humidity: 75,
+          windSpeed: 7,
+          description: "Nắng",
+          icon: "☀️",
+        },
+        "Đà Nẵng": {
+          temperature: 28,
+          humidity: 82,
+          windSpeed: 12,
+          description: "Mưa rào",
+          icon: "🌧️",
+        },
+      };
+
+      let inputText = document.querySelector("#inputCity");
+      let btnSearch = document.querySelector("#btn");
+      let result = document.querySelector(".result");
+
+      console.log();
+
+      btnSearch.addEventListener("click", function (event) {
+        event.preventDefault();
+
+        result.innerHTML = "";
+
+        let valueInput = inputText.value.trim().toLowerCase();
+
+        if (valueInput) {
+          let check = Object.keys(weatherData).find((item) =>
+            item.toLowerCase().includes(valueInput)
+          );
+
+          if (check) {
+            let html = `
+                    <h2 id="cityName">${check}</h2>
+                    <div class="info">
+                        <p class="info-item" >${
+                          weatherData[`${check}`].icon
+                        }</p>
+                        <p class="info-item" ><strong>${
+                          weatherData[`${check}`].temperature
+                        }&deg;C</strong></p>
+                        <div class="info-detail">
+                            <p>${weatherData[`${check}`].description}</p>
+                            <p>Độ ẩm: <span>${
+                              weatherData[`${check}`].humidity
+                            }</span>%</p>
+                            <p>tốc độ gió: <span>${
+                              weatherData[`${check}`].windSpeed
+                            }</span> km/h</p>
+                        </div>
+                    </div> 
+              `;
+
+            result.innerHTML = html;
+            inputText.value = "";
+          } else {
+            alert("Không tìm thấy tên thành phố!");
+          }
+        } else {
+          alert("Dữ liệu rỗng!");
+        }
+      });
+    </script>
+  </body>
+</html>
