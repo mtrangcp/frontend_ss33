@@ -101,6 +101,8 @@ function renderCart() {
     itemCart.innerHTML = "";
     if (carts.length === 0) {
         itemCart.innerHTML = "<p>Giỏ hàng trống</p>";
+        totalAmout.textContent = convertMoney(0);
+
     } else {
 
         let htmls = carts.map((item, index) => {
